@@ -1,0 +1,14 @@
+{% extends TEMPLATE_BASE %}
+{% block title %}Confirm Vote{% endblock %}
+
+{% block content %}
+{#<h1>{{election.name}} &mdash; Vote Successfully Cast!</h1>#}
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Verificar" />
+</form>
+
+{% endblock %}
+
+
