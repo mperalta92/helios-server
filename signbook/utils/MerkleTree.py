@@ -15,6 +15,7 @@ class MerkleTree:
         self.hash = g
         self.current_key_index = 0
         self.height = h
+        self.db_ref = None
         #Merkle Tree Generation:
         stack = []
         for i in range(int(math.pow(2,h))):

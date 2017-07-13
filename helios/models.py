@@ -13,6 +13,8 @@ from django.core.mail import send_mail
 
 import datetime, logging, uuid, random, io
 import bleach
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from crypto import electionalgs, algs, utils
 from helios import utils as heliosutils
@@ -34,6 +36,15 @@ class HeliosModel(models.Model, datatypes.LDObjectContainer):
     abstract = True
 
 class Election(HeliosModel):
+
+  # def save(self, *args, **kwargs):
+  #   """
+  #   override this just to get a hook
+  #   """
+  #
+  #   super(Election, self).save(*args, **kwargs)
+
+
   admin = models.ForeignKey(User)
   
   uuid = models.CharField(max_length=50, null=False)
@@ -649,7 +660,14 @@ class Election(HeliosModel):
       prettified_result.append({'question': q['short_name'], 'answers': pretty_question})
 
     return prettified_result
-    
+
+@receiver(post_save, sender=Election, dispatch_uid="set info")
+def set_merkle_tree(sender, instance, **kwargs):
+  a = 2
+  from signbook.utils.functions import new_merkle_tree
+  new_merkle_tree()
+
+
 class ElectionLog(models.Model):
   """
   a log of events for an election

@@ -1,6 +1,10 @@
+from Crypto.Hash import SHA256
 from Crypto.Random.random import getrandbits
-from signbook.utils.functions import my_hash
 
+
+
+def my_hash(m):
+    return SHA256.new(str(m)).hexdigest()
 
 class OtsScheme:
 
