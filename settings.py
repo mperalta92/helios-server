@@ -210,8 +210,8 @@ AUTH_ENABLED_AUTH_SYSTEMS = get_from_env('AUTH_ENABLED_AUTH_SYSTEMS', 'google').
 AUTH_DEFAULT_AUTH_SYSTEM = get_from_env('AUTH_DEFAULT_AUTH_SYSTEM', None)
 
 # google
-GOOGLE_CLIENT_ID = get_from_env('GOOGLE_CLIENT_ID', '')
-GOOGLE_CLIENT_SECRET = get_from_env('GOOGLE_CLIENT_SECRET', '')
+GOOGLE_CLIENT_ID = "700336628465-2ovim79echh336me2be17v82g2k6g1dt.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "kHDUw9EOioOf5UDsrK77xMt-"
 
 # facebook
 FACEBOOK_APP_ID = get_from_env('FACEBOOK_APP_ID','')

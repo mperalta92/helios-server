@@ -46,7 +46,10 @@ class User(models.Model):
     
   @classmethod
   def get_by_type_and_id(cls, user_type, user_id):
-    return cls.objects.get(user_type = user_type, user_id = user_id)
+    if cls.objects.filter(user_type = user_type, user_id = user_id).exists():
+      return cls.objects.get(user_type = user_type, user_id = user_id)
+    else:
+      return None
   
   @classmethod
   def update_or_create(cls, user_type, user_id, name=None, info=None, token=None):
